@@ -9,11 +9,11 @@ import java.util.List;
 
 @Repository
 public interface StaffRepository extends JpaRepository<Staff, Long> {
-    List<Staff> findByStateAndIdManager(String state, Long idManager);
+    List<Staff> findByStateAndManagerId(String state, Long managerId);
 
-    List<Staff> findByIdProject(Project projectId);
+    List<Staff> findByIdProject(Project idProject);
 
-    Staff findByProjectId(Project projectId);
+    Staff findByidProject(Project idProject);
 
     Staff save(Staff staff);
 }

@@ -25,7 +25,7 @@ public class Staff {
 
     @ManyToOne
     @JoinColumn(name = "idProject")
-    private Project projectId;
+    private Project idProject;
 
     public Long getId() {
         return id;
@@ -68,11 +68,11 @@ public class Staff {
     }
 
     public Project getProjectId() {
-        return projectId;
+        return idProject;
     }
 
-    public void setProjectId(Project projectId) {
-        this.projectId = projectId;
+    public void setProjectId(Project idProject) {
+        this.idProject = idProject;
     }
 }
 

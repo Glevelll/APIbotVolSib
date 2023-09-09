@@ -2,6 +2,7 @@ package com.example.VSAPIBot.Staff;
 
 import com.example.VSAPIBot.Manager.Manager;
 import com.example.VSAPIBot.Project.Project;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,9 @@ import org.slf4j.LoggerFactory;
 @RestController
 @RequestMapping("/staff")
 public class StaffController {
-    private final StaffRepository staffRepository;
+
+    @Autowired
+    private StaffRepository staffRepository;
     private final Logger logger = LoggerFactory.getLogger(StaffController.class);
 
     public StaffController(StaffRepository staffRepository) {
@@ -23,11 +26,11 @@ public class StaffController {
 
     @GetMapping("/{state}/{id_manager}")
     @ResponseBody
-    public ResponseEntity<List<Staff>> getStaffByStateAndIdManager(
+    public ResponseEntity<List<Staff>> getStaffByStateAndManagerId(
             @PathVariable("state") String state,
-            @PathVariable("id_manager") Long idManager) {
+            @PathVariable("id_manager") Long managerId) {
         try {
-            List<Staff> staffList = staffRepository.findByStateAndIdManager(state, idManager);
+            List<Staff> staffList = staffRepository.findByStateAndManagerId(state, managerId);
             if (!staffList.isEmpty()) {
                 return new ResponseEntity<>(staffList, HttpStatus.OK);
             } else {
@@ -42,9 +45,9 @@ public class StaffController {
     @GetMapping("/{projectId}")
     @ResponseBody
     public ResponseEntity<List<Staff>> getStaffByIdProject(
-            @PathVariable("idProject") Project projectId) {
+            @PathVariable("idProject") Project idProject) {
         try {
-            List<Staff> staffList = staffRepository.findByIdProject(projectId);
+            List<Staff> staffList = staffRepository.findByIdProject(idProject);
             if (!staffList.isEmpty()) {
                 return new ResponseEntity<>(staffList, HttpStatus.OK);
             } else {
@@ -56,11 +59,11 @@ public class StaffController {
         }
     }
 
-    @PutMapping("/{projectId}")
+    @PutMapping("/{idProject}")
     @ResponseBody
-    public ResponseEntity<Staff> updateStaffByProjectId(@PathVariable("idProject") Project projectId, @RequestBody Staff staff) {
+    public ResponseEntity<Staff> updateStaffByIdProject(@PathVariable("idProject") Project idProject, @RequestBody Staff staff) {
         try {
-            Staff existingStaff = staffRepository.findByProjectId(projectId);
+            Staff existingStaff = staffRepository.findByidProject(idProject);
             if (existingStaff != null) {
                 existingStaff.setManagerId(staff.getManagerId());
                 existingStaff.setUserId(staff.getUserId());

@@ -24,7 +24,7 @@ public class ModeratorController {
     public ResponseEntity<Moderator> getModerator(@PathVariable("loginModerator") Long loginModerator) {
         Moderator moderator;
         try {
-            moderator = moderatorRepository.findById(loginModerator)
+            moderator = moderatorRepository.findByLogin(loginModerator)
                     .orElseThrow(() -> new EntityNotFoundException("Moderator not found with login: " + loginModerator));
             return ResponseEntity.ok(moderator);
         } catch (EntityNotFoundException e) {
