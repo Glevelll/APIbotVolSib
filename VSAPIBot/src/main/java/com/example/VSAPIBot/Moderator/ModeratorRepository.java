@@ -8,7 +8,7 @@ import java.util.Optional;
 @Repository
 public interface ModeratorRepository extends JpaRepository<Moderator, String> {
 
-    Optional<Moderator> findById(String login);
+    Optional<Moderator> findById(Long login);
 
     Moderator save(Moderator moderator);
 

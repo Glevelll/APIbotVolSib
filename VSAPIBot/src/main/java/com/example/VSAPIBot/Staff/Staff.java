@@ -1,5 +1,6 @@
 package com.example.VSAPIBot.Staff;
 
+import com.example.VSAPIBot.Project.Project;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,6 +8,7 @@ import jakarta.persistence.*;
 public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "id_manager")
@@ -22,8 +24,8 @@ public class Staff {
     private String state;
 
     @ManyToOne
-    @JoinColumn(name = "project_id")
-    private Long projectId;
+    @JoinColumn(name = "id")
+    private Project projectId;
 
     public Long getId() {
         return id;
@@ -65,11 +67,11 @@ public class Staff {
         this.state = state;
     }
 
-    public Long getProjectId() {
+    public Project getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(Project projectId) {
         this.projectId = projectId;
     }
 }

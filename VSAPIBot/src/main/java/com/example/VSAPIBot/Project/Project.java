@@ -10,20 +10,27 @@ import jakarta.persistence.*;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "type")
     private String type;
+    @Column(name = "description")
     private String description;
+    @Column(name = "requirements")
     private String requirements;
+    @Column(name = "state")
     private String state;
+    @Column(name = "comment")
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "info_manager")
+    @JoinColumn(name = "login")
     private Manager infoManager;
 
     @ManyToOne
-    @JoinColumn(name = "info_moder")
+    @JoinColumn(name = "login")
     private Moderator infoModer;
 
     public Long getId() {

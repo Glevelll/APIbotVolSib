@@ -1,5 +1,6 @@
 package com.example.VSAPIBot.Project;
 
+import com.example.VSAPIBot.Manager.Manager;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +12,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAll();
 
     Optional<Project> findById(Long id);
-    Optional<Project> findByState(String state);
+    Optional<Project> findByStateAndInfoManager(String state, Manager ingoManager);
 
     Project save(Project project);
 }

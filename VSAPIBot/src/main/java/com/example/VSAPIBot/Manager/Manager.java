@@ -1,5 +1,6 @@
 package com.example.VSAPIBot.Manager;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,13 +9,14 @@ import jakarta.persistence.Table;
 @Table(name = "project_manager")
 public class Manager {
     @Id
-    private String login;
+    @Column(name = "login")
+    private Long login;
 
-    public String getLogin() {
+    public Long getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Long login) {
         this.login = login;
     }
 }
