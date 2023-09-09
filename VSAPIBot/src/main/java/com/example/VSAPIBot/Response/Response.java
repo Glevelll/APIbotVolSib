@@ -8,13 +8,13 @@ import jakarta.persistence.*;
 public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idResponse")
     private Long id;
     @Column(name = "description")
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idProject")
     private Project project;
 
     public Long getId() {

@@ -42,7 +42,7 @@ public class StaffController {
     @GetMapping("/{projectId}")
     @ResponseBody
     public ResponseEntity<List<Staff>> getStaffByIdProject(
-            @PathVariable("id") Project projectId) {
+            @PathVariable("idProject") Project projectId) {
         try {
             List<Staff> staffList = staffRepository.findByIdProject(projectId);
             if (!staffList.isEmpty()) {
@@ -58,7 +58,7 @@ public class StaffController {
 
     @PutMapping("/{projectId}")
     @ResponseBody
-    public ResponseEntity<Staff> updateStaffByProjectId(@PathVariable("projectId") Project projectId, @RequestBody Staff staff) {
+    public ResponseEntity<Staff> updateStaffByProjectId(@PathVariable("idProject") Project projectId, @RequestBody Staff staff) {
         try {
             Staff existingStaff = staffRepository.findByProjectId(projectId);
             if (existingStaff != null) {

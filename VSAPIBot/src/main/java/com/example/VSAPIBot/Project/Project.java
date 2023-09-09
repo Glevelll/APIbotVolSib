@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idProject")
     private Long id;
     @Column(name = "title")
     private String title;
@@ -20,17 +20,17 @@ public class Project {
     private String description;
     @Column(name = "requirements")
     private String requirements;
-    @Column(name = "state")
+    @Column(name = "stateProject")
     private String state;
     @Column(name = "comment")
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "login")
+    @JoinColumn(name = "loginManager")
     private Manager infoManager;
 
     @ManyToOne
-    @JoinColumn(name = "login")
+    @JoinColumn(name = "loginModerator")
     private Moderator infoModer;
 
     public Long getId() {

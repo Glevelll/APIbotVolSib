@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "project_manager")
 public class Manager {
     @Id
-    @Column(name = "login")
+    @Column(name = "loginManager")
     private Long login;
 
     public Long getLogin() {

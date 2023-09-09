@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idStaff")
     private Long id;
 
     @Column(name = "id_manager")
@@ -24,7 +24,7 @@ public class Staff {
     private String state;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idProject")
     private Project projectId;
 
     public Long getId() {

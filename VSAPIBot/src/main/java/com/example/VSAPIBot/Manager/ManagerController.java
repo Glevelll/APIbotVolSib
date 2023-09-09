@@ -18,7 +18,7 @@ public class ManagerController {
 
     @GetMapping("/{login}")
     @ResponseBody
-    public ResponseEntity<Manager> getUserByLogin(@PathVariable("login") Long login) {
+    public ResponseEntity<Manager> getUserByLogin(@PathVariable("loginManager") Long login) {
         try {
             Manager manager = managerRepository.findByLogin(login);
             if (manager != null) {

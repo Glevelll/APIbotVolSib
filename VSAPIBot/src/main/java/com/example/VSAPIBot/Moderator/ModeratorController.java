@@ -21,11 +21,11 @@ public class ModeratorController {
 
     @GetMapping("/{login}")
     @ResponseBody
-    public ResponseEntity<Moderator> getModerator(@PathVariable Long login) {
+    public ResponseEntity<Moderator> getModerator(@PathVariable("loginModerator") Long loginModerator) {
         Moderator moderator;
         try {
-            moderator = moderatorRepository.findById(login)
-                    .orElseThrow(() -> new EntityNotFoundException("Moderator not found with login: " + login));
+            moderator = moderatorRepository.findById(loginModerator)
+                    .orElseThrow(() -> new EntityNotFoundException("Moderator not found with login: " + loginModerator));
             return ResponseEntity.ok(moderator);
         } catch (EntityNotFoundException e) {
             LOGGER.error("Error while retrieving moderator: {} ", e.getMessage());

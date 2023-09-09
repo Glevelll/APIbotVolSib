@@ -23,10 +23,10 @@ public class ProjectController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<Project> getProjectById(@PathVariable Long id) {
+    public ResponseEntity<Project> getProjectById(@PathVariable("idProject") Long idProject) {
         try {
-            Project project = projectRepository.findById(id)
-                    .orElseThrow(() -> new ResourceNotFoundException("Project not found with id: " + id));
+            Project project = projectRepository.findById(idProject)
+                    .orElseThrow(() -> new ResourceNotFoundException("Project not found with id: " + idProject));
             return ResponseEntity.ok().body(project);
         } catch (ResourceNotFoundException ex) {
             logger.error("Error while fetching project by id ", ex);
@@ -40,11 +40,11 @@ public class ProjectController {
     @GetMapping("/{state}/{infoManager}")
     @ResponseBody
     public ResponseEntity<Project> getProjectByStateAndInfoManager(
-            @PathVariable String state,
-            @PathVariable Manager infoManager) {
+            @PathVariable("stateProject") String stateProject,
+            @PathVariable("loginManager") Manager infoManager) {
         try {
-            Project project = projectRepository.findByStateAndInfoManager(state, infoManager)
-                    .orElseThrow(() -> new ResourceNotFoundException("Project not found with state: " + state
+            Project project = projectRepository.findByStateAndInfoManager(stateProject, infoManager)
+                    .orElseThrow(() -> new ResourceNotFoundException("Project not found with state: " + stateProject
                             + " and infoManager: " + infoManager));
             return ResponseEntity.ok().body(project);
         } catch (ResourceNotFoundException ex) {
@@ -71,10 +71,10 @@ public class ProjectController {
 
     @PutMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<Project> updateProject(@PathVariable Long id, @RequestBody Project projectDetails) {
+    public ResponseEntity<Project> updateProject(@PathVariable("idProject") Long idProject, @RequestBody Project projectDetails) {
         try {
-            Project project = projectRepository.findById(id)
-                    .orElseThrow(() -> new ResourceNotFoundException("Project not found with id: " + id));
+            Project project = projectRepository.findById(idProject)
+                    .orElseThrow(() -> new ResourceNotFoundException("Project not found with id: " + idProject));
 
             project.setTitle(projectDetails.getTitle());
             project.setType(projectDetails.getType());

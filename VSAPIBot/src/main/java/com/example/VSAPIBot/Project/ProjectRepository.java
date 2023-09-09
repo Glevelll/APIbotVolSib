@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAll();
 
-    Optional<Project> findById(Long id);
-    Optional<Project> findByStateAndInfoManager(String state, Manager ingoManager);
+    Optional<Project> findById(Long idProject);
+    Optional<Project> findByStateAndInfoManager(String stateProject, Manager ingoManager);
 
     Project save(Project project);
 }
