@@ -16,7 +16,7 @@ public class Project {
     private String title;
     @Column(name = "type")
     private String type;
-    @Column(name = "description")
+    @Column(name = "descriptionProject")
     private String description;
     @Column(name = "requirements")
     private String requirements;
